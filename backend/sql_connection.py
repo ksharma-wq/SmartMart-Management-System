@@ -1,14 +1,17 @@
-#this file work is to connect the database
-import datetime
 import mysql.connector
 
 __cnx = None
 
 def get_sql_connection():
-  print("Opening mysql connection")
-  global __cnx
+    global __cnx
 
-  if __cnx is None:
-    __cnx = mysql.connector.connect(user='root', password='Root@123', database='grocery_store')
+    if __cnx is None:
+        __cnx = mysql.connector.connect(
+            host="altaria.proxy.rlwy.net",
+            port=24623,
+            user="root",
+            password="XCWJvafOwzTvIXYlTUpodokiuCNsklGV",
+            database="railway"
+        )
 
-  return __cnx
+    return __cnx
