@@ -1,7 +1,3 @@
-#this file is the main controller of the project
-#characteristics = its starts flask server, make api, it takes request from the frontend
-
-
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from sql_connection import get_sql_connection
@@ -12,9 +8,18 @@ import orders_dao
 import uom_dao
 
 app = Flask(__name__)
-CORS(app)   # Enable CORS for all routes
+CORS(app)
 
 connection = get_sql_connection()
+
+
+# ADD THIS ROUTE
+@app.route('/', methods=['GET'])
+def home():
+    return jsonify({
+        "status": "success",
+        "message": "SmartMart Backend is Running Successfully!"
+    })
 
 
 @app.route('/getUOM', methods=['GET'])
@@ -69,4 +74,4 @@ def delete_product():
 
 if __name__ == "__main__":
     print("Starting Python Flask Server For Grocery Store Management System")
-    app.run(host="127.0.0.1", port=5000, debug=True)
+    app.run(host="0.0.0.0", port=5000, debug=True)
